@@ -3,8 +3,6 @@ import axios from "axios"
 
 export const fetchChartsApi = (params) => {
 
-  console.log(params);
-
   const param = params.param;
 
   const country = params.country;
