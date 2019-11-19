@@ -61,7 +61,7 @@ class App extends Component {
               <button
                 onClick={this.handleFetchCharts}
                 id={PARAMS.lastWeek}
-                disabled={!this.state.selectedCompany}
+                disabled={true}
               >
                 Last week
               </button>
@@ -69,7 +69,7 @@ class App extends Component {
               <button
                 onClick={this.handleFetchCharts}
                 id={PARAMS.lastDay}
-                disabled={!this.state.selectedCompany}
+                disabled={true}
               >
                 Last day
               </button>
@@ -77,7 +77,7 @@ class App extends Component {
               <button
                 onClick={this.handleFetchCharts}
                 // id="lastMonth"
-                disabled={!this.state.selectedCompany}
+                disabled={true}
               >
                 All
               </button>
