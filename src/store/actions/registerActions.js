@@ -14,26 +14,7 @@ export const setItems = data =>{
   };
 };
 
-export const addItem = data =>{
-  return{
-    type: types.ADD_ITEM,
-    payload: data
-  };
-};
 
-export const editItem = data =>{
-  return{
-    type: types.EDIT_ITEM,
-    payload: data
-  };
-};
-
-export const deleteItem = data =>{
-  return{
-    type: types.DELETE_ITEM,
-    payload: data
-  };
-};
 
 
 

@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import style from "./App.module.scss";
 import PageLayout from "./components/pageLayout";
-import {Button, Input, Select} from "antd";
 import {connect} from "react-redux";
 import {fetchItems} from "./store/actions/registerActions";
 import ChartsPage from "./page";
 import {PARAMS} from "./utils/constatns";
-// import
 
-const { Option } = Select;
 
-const { Search } = Input;
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +25,17 @@ class App extends Component {
 
     console.log(e.target.id);
 
-    fetchItems(e.target.id)
+    fetchItems({param: e.target.id, country: this.state.selectedCompany})
   };
 
   handleChange = (e) => {
-    // console.log(`selected ${e.target.value}`);
     this.setState({selectedCompany: e.target.value})
   }
 
+
+
   render() {
     const { data } = this.props;
-    console.log(data);
     return (
       <div className={style["App"]}>
         <PageLayout>
@@ -86,7 +84,7 @@ class App extends Component {
             </div>
           </header>
           <div className="main-page-content">
-            <ChartsPage />
+            <ChartsPage charts={data} />
           </div>
         </PageLayout>
       </div>

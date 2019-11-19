@@ -19,28 +19,8 @@ const headerReducer = createReducer(initialState, {
       // metaData,
       // timeSeries
     }
-  },
-  [actionsTypes.ADD_ITEM]: (state, {payload}) => {
-    const newData = [...state.data].push(payload);
-    return {
-      ...state,
-      data: newData
-    }
-  },
-  [actionsTypes.EDIT_ITEM]: (state, {payload}) => {
-    /*const newData = [...state.data].push(payload);
-    return {
-      ...state,
-      data: newData
-    }*/
-  },
-  [actionsTypes.DELETE_ITEM]: (state, {payload}) => {
-    /*const newData = [...state.data].push(payload);
-    return {
-      ...state,
-      data: newData
-    }*/
   }
+
 });
 
 export default headerReducer;

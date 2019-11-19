@@ -3,21 +3,17 @@ import types from "../actionsTypes";
 import { setItems } from "../actions/registerActions";
 import {fetchChartsApi} from "../../api";
 
-let data = [
-  {name: "Dan"}
-];
 
 export function* fetchItems(action) {
 
-  // console.log(action)
 
-  const param = action.payload
+  const params = action.payload
 
   try {
 
     // yield put(setLoading(true));
 
-    const result = yield call(fetchChartsApi, param);
+    const result = yield call(fetchChartsApi, params);
 
     console.log(result);
 
