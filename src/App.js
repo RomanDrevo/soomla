@@ -27,11 +27,33 @@ class App extends Component {
           <header className="App-header">
             <div className="add-new-item-wrapper">
               <Button
+              type="primary"
+              onClick={this.handleDoSomething}
+              size="large"
+            >
+              Last 30 days
+            </Button>
+              <Button
                 type="primary"
                 onClick={this.handleDoSomething}
                 size="large"
               >
-                Do something
+                Weekly
+              </Button>
+              <Button
+                type="primary"
+                onClick={this.handleDoSomething}
+                size="large"
+              >
+                Last 24 h
+              </Button>
+
+              <Button
+                type="primary"
+                onClick={this.handleDoSomething}
+                size="large"
+              >
+                All
               </Button>
               <div className="search-item-wrapper">
                 <Search
