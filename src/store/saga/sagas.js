@@ -8,11 +8,16 @@ let data = [
 ];
 
 export function* fetchItems(action) {
+
+  // console.log(action)
+
+  const param = action.payload
+
   try {
 
     // yield put(setLoading(true));
 
-    const result = yield call(fetchChartsApi);
+    const result = yield call(fetchChartsApi, param);
 
     console.log(result);
 

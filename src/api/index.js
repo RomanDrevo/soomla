@@ -1,6 +1,9 @@
 import axios from "axios"
 
 
-export const fetchChartsApi = () => {
-  return axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo')
+export const fetchChartsApi = (param) => {
+
+  console.log(param);
+
+  return axios.get(`https://www.alphavantage.co/query?function=${param}&symbol=MSFT&apikey=demo`)
 }

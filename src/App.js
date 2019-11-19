@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import style from "./App.module.scss";
 import PageLayout from "./components/pageLayout";
-import { Button, Input } from "antd";
+import {Button, Input, Select} from "antd";
 import {connect} from "react-redux";
 import {fetchItems} from "./store/actions/registerActions";
 import ChartsPage from "./page";
+import {PARAMS} from "./utils/constatns";
+// import
+
+const { Option } = Select;
 
 const { Search } = Input;
 class App extends Component {
@@ -13,10 +17,23 @@ class App extends Component {
     props.fetchItems();
   }
 
+  state = {
+    selectedCompany: null
+  }
 
-  handleDoSomething = e => {
-    console.log(e.target);
+
+  handleFetchCharts = e => {
+    const {fetchItems} = this.props;
+
+    console.log(e.target.id);
+
+    fetchItems(e.target.id)
   };
+
+  handleChange = (e) => {
+    // console.log(`selected ${e.target.value}`);
+    this.setState({selectedCompany: e.target.value})
+  }
 
   render() {
     const { data } = this.props;
@@ -26,41 +43,46 @@ class App extends Component {
         <PageLayout>
           <header className="App-header">
             <div className="add-new-item-wrapper">
-              <Button
-              type="primary"
-              onClick={this.handleDoSomething}
-              size="large"
-            >
-              Last 30 days
-            </Button>
-              <Button
-                type="primary"
-                onClick={this.handleDoSomething}
-                size="large"
-              >
-                Weekly
-              </Button>
-              <Button
-                type="primary"
-                onClick={this.handleDoSomething}
-                size="large"
-              >
-                Last 24 h
-              </Button>
+              <select onChange={this.handleChange}>
+                <option value="">Select Company</option>
+                <option value="KO">The Coca-Cola</option>
+                <option value="GE">General Electric</option>
+                <option value="MSFT">Microsoft</option>
+                <option value="DIS">Walt Disney</option>
+              </select>
 
-              <Button
-                type="primary"
-                onClick={this.handleDoSomething}
-                size="large"
+              <button
+                onClick={this.handleFetchCharts}
+                id={PARAMS.lastMonth}
+                disabled={!this.state.selectedCompany}
+              >
+                Last 30 days
+              </button>
+
+              <button
+                onClick={this.handleFetchCharts}
+                id={PARAMS.lastWeek}
+                disabled={!this.state.selectedCompany}
+              >
+                Last week
+              </button>
+
+              <button
+                onClick={this.handleFetchCharts}
+                id={PARAMS.lastDay}
+                disabled={!this.state.selectedCompany}
+              >
+                Last day
+              </button>
+
+              <button
+                onClick={this.handleFetchCharts}
+                // id="lastMonth"
+                disabled={!this.state.selectedCompany}
               >
                 All
-              </Button>
-              <div className="search-item-wrapper">
-                <Search
-                  placeholder="input search text"
-                  onSearch={value => console.log(value)}
-                />
-              </div>
+              </button>
+
             </div>
           </header>
           <div className="main-page-content">
@@ -80,7 +102,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchItems: () => dispatch(fetchItems())
+    fetchItems: param => dispatch(fetchItems(param))
   };
 }
 
