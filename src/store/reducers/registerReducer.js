@@ -3,6 +3,7 @@ import createReducer from '../reducers/createReducer'
 
 const initialState = {
   data: null,
+  loading: false
   // metaData: null,
   // timeSeries: null
 };

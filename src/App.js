@@ -13,29 +13,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     props.fetchItems();
-  }
+  };
 
   state = {
     selectedCompany: null
-  }
+  };
 
 
   handleFetchCharts = e => {
     const {fetchItems} = this.props;
-
-    console.log(e.target.id);
 
     fetchItems({param: e.target.id, country: this.state.selectedCompany})
   };
 
   handleChange = (e) => {
     this.setState({selectedCompany: e.target.value})
-  }
+  };
 
 
 
   render() {
-    const { data } = this.props;
+    const { data, loading } = this.props;
+
+    if(loading) return <div>Loading...</div>
+
     return (
       <div className={style["App"]}>
         <PageLayout>
@@ -95,6 +96,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     data: state.currData.data,
+    loading: state.currData.loading,
   };
 };
 

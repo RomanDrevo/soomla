@@ -27,10 +27,6 @@ function ChartsPage({charts}) {
     return [new Date(key), str]
   })
 
-
-
-
-
   const high = Object.keys(charts[newCharts]).map(key => {
 
     const str = charts[newCharts][key]["2. high"]
@@ -46,9 +42,6 @@ function ChartsPage({charts}) {
 
     return [new Date(key), str]
   });
-
-
-
 
   const close = Object.keys(charts[newCharts]).map(key => {
 
@@ -75,6 +68,7 @@ function ChartsPage({charts}) {
       label: 'Low',
       data: low
     },
+
   ]
 
 

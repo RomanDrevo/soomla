@@ -14,6 +14,13 @@ export const setItems = data =>{
   };
 };
 
+export const setLoading = data => {
+  return{
+    type: types.SET_LOADING_STATUS,
+    payload: data
+  };
+}
+
 
 
 
